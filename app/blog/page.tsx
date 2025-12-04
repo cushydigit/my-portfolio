@@ -4,52 +4,12 @@ import Link from "next/link"
 import { Calendar, ArrowRight } from "lucide-react"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { getAllPosts } from "@/lib/blog"
 
 export default function Blog() {
-  const posts = [
-    {
-      title: "Building Scalable APIs with Go",
-      description: "Learn best practices for creating high-performance REST APIs using Go and modern design patterns.",
-      image: "/golang-code-editor.jpg",
-      date: "Dec 15, 2024",
-      link: "#",
-    },
-    {
-      title: "SEO Fundamentals for Developers",
-      description: "Essential SEO techniques every developer should know to build search-friendly websites.",
-      image: "/seo-analytics-dashboard.png",
-      date: "Dec 10, 2024",
-      link: "#",
-    },
-    {
-      title: "Microservices Architecture Patterns",
-      description: "Exploring different patterns and when to use them in distributed systems design.",
-      image: "/cloud-architecture-diagram.png",
-      date: "Dec 5, 2024",
-      link: "#",
-    },
-    {
-      title: "Email Marketing Automation Tips",
-      description: "Strategies for setting up effective email campaigns that convert leads into customers.",
-      image: "/email-marketing-dashboard.png",
-      date: "Nov 28, 2024",
-      link: "#",
-    },
-    {
-      title: "Next.js Performance Optimization",
-      description: "Techniques for improving loading times and user experience in Next.js applications.",
-      image: "/nextjs-performance-metrics.jpg",
-      date: "Nov 20, 2024",
-      link: "#",
-    },
-    {
-      title: "Landing Page Conversion Tactics",
-      description: "Design and copywriting strategies to maximize conversions on your landing pages.",
-      image: "/landing-page-mockup.png",
-      date: "Nov 15, 2024",
-      link: "#",
-    },
-  ]
+
+  const posts = getAllPosts();
+
 
   return (
     <section id="blog" className="py-20 md:py-32 bg-muted/30">
@@ -87,7 +47,7 @@ export default function Blog() {
               </CardContent>
               <CardFooter className="p-6 pt-0">
                 <Button asChild variant="ghost" size="sm" className="text-accent-blue hover:text-accent-blue/80 group">
-                  <Link href={post.link}>
+                  <Link key={post.slug} href={`/blog/${post.slug}`}>
                     Read More
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
