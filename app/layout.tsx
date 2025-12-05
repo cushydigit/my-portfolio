@@ -3,9 +3,9 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ArticleJsonLd } from "next-seo"
 import "./globals.css"
-import SEO from "../seo.config"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -75,6 +75,7 @@ export default function RootLayout({
           description="Learn how to improve your Next.js SEO"
         />
         {children}
+        <SpeedInsights /> // for vercel
         <Analytics />
       </body>
     </html>
