@@ -3,13 +3,15 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { ArticleJsonLd } from "next-seo"
 import "./globals.css"
+import SEO from "../seo.config"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "YourName - Freelance Developer & Digital Marketer",
+  title: "Shahin.R - Freelance Developer & Digital Marketer",
   description:
     "Freelance developer specializing in scalable web solutions, API development, and digital marketing. Building fast, modern applications with Go, PHP, Next.js, and helping businesses grow online.",
   keywords: [
@@ -65,6 +67,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
+        <ArticleJsonLd
+          headline="Getting Started with Next SEO"
+          datePublished="2024-01-01T08:00:00+00:00"
+          author="John Doe"
+          image="https://example.com/article-image.jpg"
+          description="Learn how to improve your Next.js SEO"
+        />
         {children}
         <Analytics />
       </body>
